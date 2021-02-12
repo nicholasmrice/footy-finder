@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express()
 require('dotenv').config()
@@ -20,6 +21,16 @@ mongoose.connect(MONGODB_URI, {
   useUnifiedTopology: true,
   useFindAndModify: false,
 })
+
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
 
 mongoose.connection.on('error', (err) =>
   console.log(err.message, ' is mongodb not running/Problem w Atlas connection?'))
