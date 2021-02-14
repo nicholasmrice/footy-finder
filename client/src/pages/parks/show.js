@@ -5,10 +5,9 @@ class ShowPark extends React.Component {
   state = {
     name: '',
 		address: '',
+    image: '',
 		latitude: '',
 		longitude: '',
-    image: '',
-		// parks: []
 	};
   // Read/Show Park
   showPark = () => {

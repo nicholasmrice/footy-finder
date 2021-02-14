@@ -15,6 +15,12 @@ class SubmitAPark extends React.Component {
                     <label htmlFor="image">Image</label>
                     <input id="image" type="text" onChange={this.props.handleChange} value={this.props.state.image}/>
                     <br/>
+                    <label htmlFor="latitude">Latitude</label>
+                    <input id="latitude" type="text" onChange={this.props.handleChange} value={this.props.state.latitude}/>
+                    <br/>
+                    <label htmlFor="longitude">Longitude</label>
+                    <input id="longitude" type="text" onChange={this.props.handleChange} value={this.props.state.longitude}/>
+                    <br/>
                     <input type="submit" value="Create New Park"/>
                 </form>
             </div>

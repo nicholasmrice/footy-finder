@@ -9,10 +9,10 @@ class Home extends React.Component {
   state = {
     name: '',
     address: '',
+    image: '',
     latitude: '',
     longitude: '',
-    image: '',
-    parks: []
+    parks: [],
   };
     handleChange = (event) => {
         this.setState({
@@ -35,9 +35,9 @@ class Home extends React.Component {
                     parks: res.data,
                     name: '',
                     address: '',
+                    image: '',
                     latitude: '',
                     longitude: '',
-                    image: '',
                 })
             })
             .catch((err) => {console.log(err)})
