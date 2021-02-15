@@ -59,29 +59,27 @@ class Home extends React.Component {
     // Update
     updatePark = (event) => {
        event.preventDefault();
-		   const id = event.target._id;
-		   axios.put('/parks/' + id, this.state).then(response => {
-			 this.setState({
+		   const id = event.target.id;
+		   axios.put('/parks/' + id, this.state)
+       .then(response => {
+			  this.setState({
          parks: response.data,
-         name: '',
-         address: '',
-         image: '',
-         latitude: '',
-         longitude: ''
        });
      });
      };
 
     // Delete
     deletePark = (event) => {
-        axios.delete('/parks/' + event.target.value).then((response) => {
+        axios.delete('/parks/' + event.target.value)
+        .then((response) => {
             this.setState({
               parks: response.data
             });
         });
     };
     componentDidMount = () => {
-      axios.get('/parks/').then(response => {
+      axios.get('/parks/')
+      .then(response => {
        this.setState({
         parks: response.data
     });
