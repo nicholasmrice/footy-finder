@@ -16,14 +16,14 @@ parks.get('/setup/seed', (req, res) => {
            {
               name: 'Flushing Meadows Corona Park',
               address: "47-01 111th Street, Corona, NY 11368",
+              image: 'https://www.nycgo.com/images/venues/1169/flushingmeadowcorona_schaer-004__x_large.jpg',
               latitude: '',
               longitude: '',
-              image: 'https://www.nycgo.com/images/venues/1169/flushingmeadowcorona_schaer-004__x_large.jpg'
            }
         ],
         (err, createdPark) => {
             Park.find({}, (err, foundParks) => {
-                res.redirect('/parks')
+                res.redirect('/parks/')
             })
 
         }

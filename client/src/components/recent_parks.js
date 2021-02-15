@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 class RecentParks extends React.Component {
     render = () => {
@@ -8,29 +9,37 @@ class RecentParks extends React.Component {
                 <h2>Recently Added Parks</h2>
                 <div id="recent-grid-container">
                 {this.props.state.parks.map((park) => {
-                    return <div key={park.id}>
-                       <img src={park.image} alt="park"/>
-                        <h5>Park: {park.name}</h5>
-                        <h5>Address: {park.address}</h5>
+                     return <div key={park._id}>
+                         <h5>Park: {park.name}</h5>
+                         <h5>Address: {park.address}</h5>
+                         <img src={park.image} alt="park"/>
+                         <h5>Latitude: {park.latitude}</h5>
+                         <h5>Longitude: {park.longitude}</h5>
                         <details>
                             <summary>Edit Park</summary>
-                            <form id={park.id} onSubmit={this.props.updatePark}>
-                                <label htmlFor="name">name</label>
+                            <form id={park._id} onSubmit={this.props.updatePark}>
+                                <label htmlFor="name">Name</label>
                                 <input type="text" id="name"    onChange={this.props.handleChange}/>
                                 <br />
-                                <label htmlFor="address">address</label>
+                                <label htmlFor="address">Address</label>
                                 <input type="text" id="address" onChange={this.props.handleChange}/>
                                 <br />
-                                <label htmlFor="image">image</label>
+                                <label htmlFor="image">Image</label>
                                 <input type="text" id="image" onChange={this.props.handleChange}/>
+                                <br />
+                                <label htmlFor="latitude">Latitude</label>
+                                <input type="text" id="latitude" onChange={this.props.handleChange}/>
+                                <br />
+                                <label htmlFor="longitude">Longitude</label>
+                                <input type="text" id="longitude" onChange={this.props.handleChange}/>
                                 <br />
                                 <input type="submit" value="Update Park"/>
                             </form>
                         </details>
-                        <Link to={`/show/${park.id}`}>
+                        <Link to={`/show/${park._id}`}>
                             <h5>View More Details</h5>
                         </Link>
-                    <button value={park.id} onClick={this.props.deletePark}>X</button>
+                    <button value={park._id} onClick={this.props.deletePark}>X</button>
                     </div>
                 })}
                 </div>
@@ -39,4 +48,4 @@ class RecentParks extends React.Component {
     }
 }
 
-export default RecentParks
+export default RecentParks;

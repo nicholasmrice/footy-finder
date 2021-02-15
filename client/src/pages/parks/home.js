@@ -12,27 +12,41 @@ class Home extends React.Component {
     image: '',
     latitude: '',
     longitude: '',
-    parks: [],
+    parks: []
   };
     handleChange = (event) => {
         this.setState({
             [event.target.id]: event.target.value
-        })
-    }
+        });
+    };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    axios.post('/parks/', this.state).then(response => {
+     this.setState({
+      parks: response.data,
+      name: '',
+      address: '',
+      image: '',
+      latitude: '',
+      longitude: '',
+    });
+  });
+};
     // Create
     createPark = (event) => {
         event.preventDefault()
         axios
-            .post('/parks', this.state)
-            .then((res) => {this.getParks()})
+            .post('/parks/', this.state)
+            .then((response) => {this.getParks()})
     }
     // Read
     getParks = () => {
         axios
-            .get('/parks')
-            .then((res) => {
+            .get('/parks/')
+            .then((response) => {
                 this.setState({
-                    parks: res.data,
+                    parks: response.data,
                     name: '',
                     address: '',
                     image: '',
@@ -44,25 +58,35 @@ class Home extends React.Component {
     }
     // Update
     updatePark = (event) => {
-        event.preventDefault()
-        event.target.reset()
-        axios
-            .put('/parks/' + event.target.id, this.state)
-            .then((res) => {
-                this.getParks()
-            })
-    }
+       event.preventDefault();
+		   const id = event.target._id;
+		   axios.put('/parks/' + id, this.state).then(response => {
+			 this.setState({
+         parks: response.data,
+         name: '',
+         address: '',
+         image: '',
+         latitude: '',
+         longitude: ''
+       });
+     });
+     };
+
     // Delete
     deletePark = (event) => {
-        axios
-        .delete('/parks/' + event.target.value)
-        .then((res) => {
-            this.getParks()
-        })
-    }
+        axios.delete('/parks/' + event.target.value).then((response) => {
+            this.setState({
+              parks: response.data
+            });
+        });
+    };
     componentDidMount = () => {
-        this.getParks()
-    }
+      axios.get('/parks/').then(response => {
+       this.setState({
+        parks: response.data
+    });
+  });
+  };
     render = () => {
         return (
             <React.Fragment>
@@ -75,4 +99,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home
+export default Home;

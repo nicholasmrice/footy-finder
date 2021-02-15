@@ -11,15 +11,14 @@ class ShowPark extends React.Component {
 	};
   // Read/Show Park
   showPark = () => {
-        axios
-        .get('/parks/' + this.props.match.params.id)
-        .then((res) => {
+        axios.get('/parks/' + this.props.match.params.id)
+          .then((response) => {
             this.setState({
-                name: res.data.name,
-                address: res.data.address,
-                image: res.data.image,
-                latitude: res.data.latitude,
-                longitude: res.data.longitude,
+                name: response.data.name,
+                address: response.data.address,
+                image: response.data.image,
+                latitude: response.data.latitude,
+                longitude: response.data.longitude,
             })
         })
     }
@@ -27,7 +26,7 @@ class ShowPark extends React.Component {
     updatePark = (event) => {
         event.preventDefault()
         event.target.reset()
-        axios
+         axios
             .put('/parks/' + event.target.id, this.state)
             .then((res) => {
                 this.getParks()
@@ -42,7 +41,7 @@ class ShowPark extends React.Component {
         })
     }
     componentDidMount = () => {
-      this.showPark()
+        this.showPark()
   }
     render = () => {
       return (
@@ -58,4 +57,4 @@ class ShowPark extends React.Component {
   }
 }
 
-export default ShowPark
+export default ShowPark;
