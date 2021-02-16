@@ -12,7 +12,7 @@ class Home extends React.Component {
     image: '',
     latitude: '',
     longitude: '',
-    parks: []
+    parks: [],
   };
     handleChange = (event) => {
         this.setState({
@@ -20,34 +20,33 @@ class Home extends React.Component {
         });
     };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    axios.post('/parks/', this.state).then(response => {
-     this.setState({
-      parks: response.data,
-      name: '',
-      address: '',
-      image: '',
-      latitude: '',
-      longitude: '',
-    });
-  });
-};
+//   handleSubmit = event => {
+//     event.preventDefault();
+//     axios.post('/parks/', this.state).then(response => {
+//      this.setState({
+//       parks: response.data,
+//       // name: '',
+//       // address: '',
+//       // image: '',
+//       // latitude: '',
+//       // longitude: '',
+//     });
+//   });
+// };
     // Create
     createPark = (event) => {
         event.preventDefault()
         axios
-            .post('/parks/', this.state)
-            .then((response) => {this.getParks()})
+            .post('/parks', this.state)
+            .then((res) => {this.getParks()})
     }
     // Read
     getParks = () => {
         axios
             .get('/parks/')
-            .then((response) => {
+            .then((res) => {
                 this.setState({
-                    parks: response.data,
-                    name: '',
+                    parks: res.data,
                     address: '',
                     image: '',
                     latitude: '',
@@ -90,7 +89,9 @@ class Home extends React.Component {
             <React.Fragment>
                 <RecentParks state={this.state}
                 handleChange={this.handleChange}
-                getParks={this.getParks} updatePark={this.updatePark} deletePark={this.deletePark} />
+                getParks={this.getParks} updatePark={this.updatePark} deletePark={this.deletePark}
+                getId={this.props.getId}
+                />
                 <SubmitAPark state={this.state} handleChange={this.handleChange} getParks={this.getParks} createPark={this.createPark}/>
             </React.Fragment>
         )

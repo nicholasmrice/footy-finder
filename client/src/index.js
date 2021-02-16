@@ -3,9 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import axios from 'axios';
+import reportWebVitals from './reportWebVitals';
 
-// ReactDOM.render(<App />,
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
 //   document.getElementById('root')
 // );
 
  ReactDOM.render(<App></App>, document.querySelector('main'));
+
+reportWebVitals();

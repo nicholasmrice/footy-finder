@@ -9,20 +9,27 @@ import ShowPark from './pages/parks/show.js'
 import FindAPark from './components/find_park.js'
 
 class App extends React.Component {
-	render = () => {
+	state = {
+		id: '',
+	};
+
+	 getId = (id) => {
+		 this.setState({id:id})
+	}
+
+	render = ()=> {
 		return (
 				<Router>
 						<React.Fragment>
 								<Switch>
-										<Route path='/' exact component={Home} />
-										<Route path='/show/' component={ShowPark}/>
+
+										<Route path='/parks/:id/' render={()=> <ShowPark id={this.state.id}/>}/>
+										 <Route path='/' render={()=> <Home getId = {this.getId}/>} />
 								</Switch>
 						</React.Fragment>
 				</Router>
 		)
  }
 }
-
- //ReactDOM.render(<App></App>, document.querySelector('main'));
 
 export default App;

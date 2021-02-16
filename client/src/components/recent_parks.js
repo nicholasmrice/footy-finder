@@ -36,7 +36,9 @@ class RecentParks extends React.Component {
                                 <input type="submit" value="Update Park"/>
                             </form>
                         </details>
-                        <Link to={`/show/${park._id}`}>
+                        <Link
+                            onClick={()=>this.props.getId(park._id)}
+                        to={`/parks/${park._id}`}>
                             <h5>View More Details</h5>
                         </Link>
                     <button value={park._id} onClick={this.props.deletePark}>X</button>

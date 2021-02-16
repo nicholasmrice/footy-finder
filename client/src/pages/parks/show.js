@@ -11,15 +11,16 @@ class ShowPark extends React.Component {
 	};
   // Read/Show Park
   showPark = () => {
-        axios.get('/parks/' + this.props.match.params.id)
-          .then((response) => {
-            this.setState({
-                name: response.data.name,
-                address: response.data.address,
-                image: response.data.image,
-                latitude: response.data.latitude,
-                longitude: response.data.longitude,
-            })
+     axios
+       .get('/parks/park/' + this.props.id)
+       .then((res) => {
+          this.setState({
+                name: res.data.name,
+                address: res.data.address,
+                image: res.data.image,
+                latitude: res.data.latitude,
+                longitude: res.data.longitude,
+           })
         })
     }
     // Update Park
@@ -42,10 +43,10 @@ class ShowPark extends React.Component {
     }
     componentDidMount = () => {
         this.showPark()
-  }
+    }
     render = () => {
       return (
-          <div id="show-park-container">
+          <div>
               <h2>This Park</h2>
               <h3>Name: {this.state.name}</h3>
               <h3>Address: {this.state.address}</h3>

@@ -9,6 +9,12 @@ parks.get('/', (req, res) => {
     })
 })
 
+parks.get('/park/:id', (req, res) => {
+    Park.findById(req.params.id, (err, foundParks) => {
+        res.json(foundParks)
+    })
+})
+
 //to hit this route must type localhost:3000/parks/setup/seed in browser
 parks.get('/setup/seed', (req, res) => {
     Park.create(
