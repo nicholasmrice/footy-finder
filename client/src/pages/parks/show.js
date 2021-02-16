@@ -47,7 +47,6 @@ class ShowPark extends React.Component {
     render = () => {
       return (
           <div>
-              <h2>This Park</h2>
               <h3>Name: {this.state.name}</h3>
               <h3>Address: {this.state.address}</h3>
               <img src={this.state.image} alt="park"/>

@@ -7,6 +7,9 @@ import ReactDOM from 'react-dom';
 import Home from './pages/parks/home.js'
 import ShowPark from './pages/parks/show.js'
 import FindAPark from './components/find_park.js'
+//Bootstrap
+// import Button from 'react-bootstrap/Button'
+
 
 class App extends React.Component {
 	state = {
@@ -22,7 +25,6 @@ class App extends React.Component {
 				<Router>
 						<React.Fragment>
 								<Switch>
-
 										<Route path='/parks/:id/' render={()=> <ShowPark id={this.state.id}/>}/>
 										 <Route path='/' render={()=> <Home getId = {this.getId}/>} />
 								</Switch>

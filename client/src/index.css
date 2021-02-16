@@ -1,24 +1,29 @@
 body {
-  background-color: black;
-  color: skyblue;
-  font-family: 'Pacifico';
+  /* background-color: navy; */
+  background-image: url("https://miro.medium.com/max/1400/1*7xUpmvZr0uzHMC4paUmV2w.jpeg");
+  color: gold;
+  font-family: 'Anton';
+  text-align: center;
+  border: 1px solid skyblue;
+  /* margin: 0 auto; */
+  /* padding: 100px; */
 }
 
 img {
   height: 200px;
   width: 200px;
   border-radius: 10%;
-  border: 1px solid maroon;
+  border: 1px solid gold;
 }
 
 input, button {
   background: ivory;
 }
 input:hover{
-  background: skyblue;
+  background: gold;
 }
 button:hover {
-  background: skyblue;
+  background: gold;
   cursor: pointer;
 }
 
@@ -42,10 +47,31 @@ button:hover {
   align-content: center;
 }
 
+#recent-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#recent-parks-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#submit-park-container {
+  text-align: center;
+}
+
 .parkCard {
   margin: 1rem;
+  padding: 1rem;
 }
 
 form {
-  text-align: right;
-} 
+  text-align: center;
+}

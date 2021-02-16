@@ -6,7 +6,7 @@ class RecentParks extends React.Component {
     render = () => {
         return (
             <div id="recent-parks-container">
-                <h2>Recently Added Parks</h2>
+                <h3>A place to find & share our favorite parks to play the worlds game</h3>
                 <div id="recent-grid-container">
                 {this.props.state.parks.map((park) => {
                      return <div key={park._id}>
